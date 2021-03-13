@@ -4,6 +4,7 @@ const { Transaction } = require("../../db");
 
 //get method
 router.get("/", async (req, res) => {
+  console.log(req.userId);
   const transactions = await Transaction.findAll();
   res.json(transactions);
 });

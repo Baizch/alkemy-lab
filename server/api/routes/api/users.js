@@ -2,6 +2,8 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { User } = require("../../db");
 const { check, validationResult } = require("express-validator");
+const moment = require("moment");
+const jwt = require("jwt-simple");
 
 //user registration
 router.post(
@@ -31,7 +33,7 @@ router.post("/login", async (req, res) => {
   if (user) {
     const areEqual = bcrypt.compareSync(req.body.password, user.password);
     if (areEqual) {
-      res.json("Token");
+      res.json({ success: createToken(user) });
     } else {
       res.json({ error: "Usuario y/o contraseña incorrectos" });
     }
@@ -39,5 +41,15 @@ router.post("/login", async (req, res) => {
     res.json({ error: "Usuario y/o contraseña incorrectos" });
   }
 });
+
+//token creation
+const createToken = (user) => {
+  const payload = {
+    userId: user.id,
+    createdAt: moment().unix(),
+    expiredAt: moment().add(5, "minutes").unix(),
+  };
+  return jwt.encode(payload, "top secret");
+};
 
 module.exports = router;
