@@ -13,7 +13,13 @@ import {
 class TransactionForm extends Component {
   //model state
   state = {
-    model: { id: 0, description: "", amount: 0, transactionType: "", date: "" },
+    model: {
+      id: 0,
+      description: "",
+      amount: "",
+      transactionType: "",
+      date: "",
+    },
   };
 
   //follow state
@@ -29,7 +35,7 @@ class TransactionForm extends Component {
       model: {
         id: 0,
         description: "",
-        amount: 0,
+        amount: "",
         transactionType: "",
         date: "",
       },
@@ -104,6 +110,7 @@ class TransactionList extends Component {
     this.props.deleteTransaction(id);
   };
 
+  //update call
   onEdit = (transaction) => {
     PubSub.publish("edit-transaction", transaction);
   };
@@ -112,7 +119,7 @@ class TransactionList extends Component {
   render() {
     const { transactions } = this.props;
     return (
-      <Table className="table-bordered text-center">
+      <Table className="table-bordered text-center" size="sm">
         <thead className="thead-dark">
           <tr>
             <th>Concepto</th>
@@ -137,6 +144,7 @@ class TransactionList extends Component {
                 >
                   Editar
                 </Button>
+                {"  "}
                 <Button
                   color="danger"
                   size="sm"
