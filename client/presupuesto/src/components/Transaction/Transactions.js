@@ -61,6 +61,7 @@ class TransactionForm extends Component {
             value={this.state.model.description}
             placeholder="Venta, compra, etc..."
             onChange={(e) => this.setValues(e, "description")}
+            required
           />
         </FormGroup>
         <FormGroup>
@@ -73,6 +74,7 @@ class TransactionForm extends Component {
                 value={this.state.model.amount}
                 placeholder="$"
                 onChange={(e) => this.setValues(e, "amount")}
+                required
               />
             </div>
             <div className="col-md-6">
@@ -83,6 +85,8 @@ class TransactionForm extends Component {
                 value={this.state.model.transactionType}
                 placeholder="Ingreso o egreso..."
                 onChange={(e) => this.setValues(e, "transactionType")}
+                required
+                disabled={this.state.model.transactionType ? true : false}
               />
             </div>
           </div>
@@ -94,6 +98,7 @@ class TransactionForm extends Component {
             type="date"
             value={this.state.model.date}
             onChange={(e) => this.setValues(e, "date")}
+            required
           />
         </FormGroup>
         <Button color="success" block onClick={this.create}>
