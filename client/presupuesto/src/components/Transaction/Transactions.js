@@ -43,6 +43,7 @@ class TransactionForm extends Component {
     this.props.transactionCreate(this.state.model);
   };
 
+  //edit transaction
   componentWillMount() {
     PubSub.subscribe("edit-transaction", (topic, transaction) => {
       this.setState({ model: transaction });
@@ -86,7 +87,7 @@ class TransactionForm extends Component {
                 placeholder="Ingreso o egreso..."
                 onChange={(e) => this.setValues(e, "transactionType")}
                 required
-                disabled={this.state.model.transactionType ? true : false}
+                readOnly={!true}
               />
             </div>
           </div>
@@ -131,7 +132,7 @@ class TransactionList extends Component {
             <th>Monto</th>
             <th>Fecha</th>
             <th>Tipo</th>
-            <th>Actions</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -179,6 +180,7 @@ export default class TransactionBox extends Component {
     },
   };
 
+  //get transactions
   componentDidMount() {
     fetch(this.url)
       .then((response) => response.json())
@@ -186,6 +188,7 @@ export default class TransactionBox extends Component {
       .catch((e) => console.log(e));
   }
 
+  //save transaction
   save = (transaction) => {
     let data = {
       id: parseInt(transaction.id),
@@ -262,6 +265,7 @@ export default class TransactionBox extends Component {
       .catch((e) => console.log(e));
   };
 
+  //set alert message timer
   timerMessage = (duration) => {
     setTimeout(() => {
       this.setState({ message: { text: "", alert: "" } });

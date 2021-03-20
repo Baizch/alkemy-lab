@@ -28,5 +28,5 @@ app.post("/", function (req, res, next) {
 app.use("/api", apiRouter);
 
 app.listen(3001, () => {
-  console.log("Está vivo!");
+  console.log("Server online");
 });

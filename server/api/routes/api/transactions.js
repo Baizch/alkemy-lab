@@ -20,7 +20,7 @@ router.put("/:transactionId", async (req, res) => {
   await Transaction.update(req.body, {
     where: { id: req.params.transactionId },
   });
-  res.json({ success: "Hey hey hey tu tabla es muy gay" });
+  res.json({ success: "Registro actualizado con éxito" });
 });
 
 //delete method
@@ -28,7 +28,7 @@ router.delete("/:transactionId", async (req, res) => {
   await Transaction.destroy({
     where: { id: req.params.transactionId },
   });
-  res.json({ success: "Hey hey hey, elimino como un rey" });
+  res.json({ success: "Registro eliminado con éxito" });
 });
 
 module.exports = router;
