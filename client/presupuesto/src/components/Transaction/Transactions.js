@@ -272,7 +272,7 @@ export default class TransactionBox extends Component {
     }, duration);
   };
 
-  //transactions list render
+  //transaction box render
   render() {
     return (
       <div>
