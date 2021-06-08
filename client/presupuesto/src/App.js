@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/Header/Header";
-import { Balance } from "./components/Balance/Balance";
+import Balance from "./components/Balance/Balance";
 import TransactionBox from "./components/Transaction/Transactions";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
